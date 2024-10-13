@@ -9,8 +9,16 @@ const user = require('./models/userModel.js')
 const Note = require('./models/note-model.js')
 const cookie = require('cookie-parser')
 const {authenticateToken} = require('./utilities');
-mongoose.connect(config.connectionString)
-
+mongoose.connect(config.connectionString , {
+    useNewUrlParser : true , 
+    useUnifiedTopology : true , 
+    connectTimeoutMS : 20000 , 
+})
+// mongoose.connect('mongodb+srv://<username>:<password>@<cluster-url>/test', {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     connectTimeoutMS: 20000, // 20 seconds
+//   });
 const App = express()
 App.use(express.json())
 App.use(cors({
@@ -83,7 +91,6 @@ App.post('/login',    async (req , res)=>{
     if(foundUser.email == email , foundUser.password == password){
      const user = { user : foundUser}
      const accessToken = jwt.sign(user , process.env.ACCESS_TOKEN_SECRET , {
-        expiresIn : '3600m'
     
      })
     

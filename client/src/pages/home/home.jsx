@@ -18,11 +18,7 @@ let [user , setUser] = useState([]);
 
 let [currentId , setCurrentId] = useState(0)
 
-//  const foundedUser = user.find(({email})=> email === finder.finder)
-//  console.log(foundedUser)
 
-//  const founderName = foundedUser.fullName;
-//  console.log(founderName)
   const  founderName = 'sohan ali'
 
 const getNotes =  async()=>{
@@ -57,7 +53,11 @@ const allUser= async ()=>{
     },)
 
     return <div>
+         <button className = 'text-red-500  underline mb-6 text-[10px] px-1 mt-3  tracking-tighter font-semibold ' onClick = {()=>{    navigate('/login')
+            }}>LOGOUT</button>
         <Navber founderName = {founderName} userDeta = {user}/>
+        <div className='text-xs font-medium pt-1 pl-6 '> What are you thinking?</div>            
+
         <div className= 'container mx-auto'>
             <div className =' max-sm:pr-5 max-sm:grid-cols-1 grid grid-cols-4  gap-5 mt-8'>
             {data.map((data)=>{    return <NoteCard key = {data._id} title = {data.title} date = {'3rd april 2024'} content = {data.content} tags = {data.tags} onEdit = {()=>{setOpenAddEditModel({isShown : true , type : 'edit' , data : null}), setCurrentId(data._id)}} id = {data._id}

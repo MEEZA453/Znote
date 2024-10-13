@@ -30,6 +30,17 @@ setError('')
 
 }
 
+
+axios.get('https://example.com/data', {
+  timeout: 20000  // Timeout set to 20 seconds
+})
+.then(response => {
+  console.log(response.data);
+})
+.catch(error => {
+  console.error('Error:', error);
+});
+
 const handleLoginApi = async () => {
     const url = 'http://localhost:3000/login';
     const loginData = {
@@ -38,14 +49,15 @@ const handleLoginApi = async () => {
     };
 
     try {
-      const response = await axiosInstance.post(url, loginData);
+      const response = await axios.post(url, loginData);
       finder.setFinder(response.data.email)
-      console.log(finder.finder)
-      localStorage.setItem("token" , response.data.accessToken)
+      // console.log(finder.finder)
+      // localStorage.setItem("token" , response.data.accessToken)
       nevigate('/dashboard')
         } catch (error) {
       // Handle any errors
-      setError(error.message )
+      console.log(error)
+      setError('error hai ' )
     }
   };
 
