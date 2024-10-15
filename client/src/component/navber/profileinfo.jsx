@@ -7,7 +7,8 @@ export default function ProfileInfo({userDeta , founderName}){
     const navigate = useNavigate()
    
     const onLogout = ()=>{
-        navigate('/login')
+      localStorage.setItem('token' , '')
+        navigate('/')
 
     }
     

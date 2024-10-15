@@ -60,7 +60,7 @@ const handleCreateAccountApi = async()=>{
          <p className = 'text-red-500 text-xs pb-1'>{error}</p>
                                 <button onClick = {handleCreateAccountApi} type= 'submit' className= 'btn-primary w-full bg-blue-500 p-2 rounded my-1 hover:bg-blue-700 text-white duration-300'>Create Account</button>
                             </form>
-                <p className = 'text-sm text-center mt-4'>Already have an account? <Link to = '/login' className = ' font-medium text-blue-500 underline'>Login</Link></p>
+                <p className = 'text-sm text-center mt-4'>Already have an account? <Link to = '/' className = ' font-medium text-blue-500 underline'>Login</Link></p>
                
         </div>
     </div>

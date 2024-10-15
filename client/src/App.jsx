@@ -5,14 +5,11 @@ import Signup from './pages/signup/signup.jsx'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 function App (){
-  let [finder , setFinder] = useState(null)
-  console.log(finder)
-
     const routes = (
       <Router>
       <Routes>
-      <Route path='/dashboard' exact element={<Home finder = {finder}/>} />
-      <Route path='/login' exact element ={<Login finder = {finder} setFinder = {setFinder}></Login>}/>
+      <Route path='/dashboard' exact element={<Home />} />
+      <Route path='/' exact element ={<Login></Login>}/>
       <Route path = '/signup' exact element ={<Signup></Signup>}/>
       </Routes>
       </Router>

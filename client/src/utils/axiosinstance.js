@@ -2,7 +2,7 @@ import axios from 'axios';
 import { BASE_URL } from './constants';
 
 
-const   axiosInstance = axios.create({
+const  axiosInstance = axios.create({
     baseURL : BASE_URL,
     timeout : 10000, 
     header :  {
@@ -12,10 +12,10 @@ const   axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
     
         (config)=>{
-            const accessToken = localStorage.getItem("token");
-            console.log(accessToken)
+            const accessToken = localStorage.getItem("token")
             if(accessToken){
-                console.log(config.headers)
+     
+            
             config.headers['Authorization'] =  `Bearer ${accessToken}`
  
             }

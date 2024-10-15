@@ -2,6 +2,7 @@ import {useState} from 'react'
 import TagInput from "../input/taginput"
 import {MdClose} from 'react-icons/md'
 import axios from 'axios'
+import axiosInstance from '../../utils/axiosinstance'
 import { useEffect } from 'react'
 export default function AddNote({onClose , noteData ,  close , type , userDeta , currentId  
 }){
@@ -25,7 +26,7 @@ const editNote =  async ()=>{
 
   }
   try {
-    const response = await axios.patch(url , data , id)
+    const response = await axiosInstance.patch(url , data , id)
     console.log(response.data)
     close(false)
     

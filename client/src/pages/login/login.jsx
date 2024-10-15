@@ -5,8 +5,7 @@ import PassInput from '../../component/input/passwordinput.jsx'
 import { validEmail } from '../../utils/helper.jsx'
 import axiosInstance from  '../../utils/axiosinstance.js'
 import axios from 'axios'
-export default function Login (finder , setFinder){
-  console.log(finder.setFinder)
+export default function Login (){
     let [email , setEmail] = useState('')
 let [password , setPassword] = useState('')
 let [error , setError] = useState('')
@@ -31,16 +30,6 @@ setError('')
 }
 
 
-axios.get('https://example.com/data', {
-  timeout: 20000  // Timeout set to 20 seconds
-})
-.then(response => {
-  console.log(response.data);
-})
-.catch(error => {
-  console.error('Error:', error);
-});
-
 const handleLoginApi = async () => {
     const url = 'http://localhost:3000/login';
     const loginData = {
@@ -50,9 +39,8 @@ const handleLoginApi = async () => {
 
     try {
       const response = await axios.post(url, loginData);
-      finder.setFinder(response.data.email)
-      // console.log(finder.finder)
-      // localStorage.setItem("token" , response.data.accessToken)
+      console.log(response.data.accessToken)
+      localStorage.setItem("token" , response.data.accessToken)
       nevigate('/dashboard')
         } catch (error) {
       // Handle any errors
@@ -61,29 +49,6 @@ const handleLoginApi = async () => {
     }
   };
 
-//     // login API call
-//    function handleLoginApi (){ try {
-//       const response = axiosInstance.post('/login', {
-//         email : email , 
-//         password : password, 
-//     }) 
-
-
-//       //Handle successfull login response
-//       if(response.data && response.data.accessToken){
-//         console.log(response.data)
-//         localStorage.setItem("token" , response.data.accessToken)
-//         nevigate('/dashboard');
-//     }else{
-//         console.log('happend ')
-//     }
-//     } catch (error) {
-//         if(error.response && error.response.data && error.response.data.message){
-//             setError(error.response.data.message0);
-//         }else{
-//             setError('An unexpected error occured , Please try again');
-//         }   
-//     }}
     return( <>
     <Navber2></Navber2>
     <div  className='flex item-center justify-center mt-20'>
