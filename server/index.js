@@ -19,10 +19,11 @@ mongoose.connect(config.connectionString , {
 //     useUnifiedTopology: true,
 //     connectTimeoutMS: 20000, // 20 seconds
 //   });
+const port = process.env.PORT
 const App = express()
 App.use(express.json())
 App.use(cors({
-    origin : '*'
+    origin : 'http://localhost:5173'
 }))
 
 
@@ -263,7 +264,8 @@ App.patch( '/pin-note/:id'  , authenticateToken, async (req , res)=>{
 
 
 
+const PORT  = 3000 || port ;
 
-App.listen(3000 , ()=>{console.log('App started')})
+App.listen( PORT  , ()=>{console.log('App started')})
 
 module.exports = App ;
