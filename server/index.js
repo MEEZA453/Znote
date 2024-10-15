@@ -28,9 +28,16 @@ App.use(cors({
 
 
 
-App.get('/'      ,  async (req,res)=>{
+App.get('/'   , authenticateToken     ,  async (req,res)=>{
+
+const user = req.user ;
+
+
     const note = await Note.find().sort({isPinned : -1});
-    res.json(note)
+    res.json({
+        note : note , 
+        user : user ,
+    })
 })
 App.get('/userdetails', async (req , res)=>{
   const person =  await user.find()
@@ -70,7 +77,7 @@ console.log('account created successfully ')
 
 })
 
-App.post('/login',    async (req , res)=>{
+App.post('/login'  ,     async (req , res)=>{
     try{
         console.log('reached to the login route')
         const {email , password} = req.body;
@@ -118,7 +125,7 @@ console.log(err)
    
 
 })
-App.post('/add-note'  ,     async (req , res)=>{
+App.post('/add-note'  ,    async (req , res)=>{
   try {
     console.log('reached to the add note');
     const {title , content , tags , isPinned , userId , createdOn}  = req.body 
@@ -146,7 +153,7 @@ if(!content){
    
 
 })
-App.patch('/edit-note/:id'  ,async (req , res)=>{
+App.patch('/edit-note/:id'   , authenticateToken  ,async (req , res)=>{
 console.log('reached to the edit-note post')
 const {id} = req.params;
 const {title , content , tags , isPinned} = req.body ;
@@ -190,7 +197,7 @@ try {
 
 
 })
-App.delete('/delete-note/:id' , async(req , res)=>{
+App.delete('/delete-note/:id'  , async(req , res)=>{
     console.log('reached to the delete post route')
     const {id} = req.params ;
 
@@ -211,7 +218,7 @@ res.json('user deleted succcessfully')
 
 
 
-App.patch( '/pin-note/:id' , async (req , res)=>{
+App.patch( '/pin-note/:id'  , authenticateToken, async (req , res)=>{
     console.log('reached to the pin note ');
     const {id} = req.params ; 
     const note = await Note.findOne({_id : id})
