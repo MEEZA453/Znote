@@ -14,11 +14,7 @@ mongoose.connect(config.connectionString , {
     useUnifiedTopology : true , 
     connectTimeoutMS : 20000 , 
 })
-// mongoose.connect('mongodb+srv://<username>:<password>@<cluster-url>/test', {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//     connectTimeoutMS: 20000, // 20 seconds
-//   });
+
 const port = process.env.PORT
 const App = express()
 App.use(express.json())
