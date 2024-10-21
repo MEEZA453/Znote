@@ -9,23 +9,21 @@ const user = require('./models/userModel.js')
 const Note = require('./models/note-model.js')
 const cookie = require('cookie-parser')
 const {authenticateToken} = require('./utilities');
-mongoose.connect(config.connectionString , {
-    useNewUrlParser : true , 
-    useUnifiedTopology : true , 
-    connectTimeoutMS : 20000 , 
-})
+mongoose.connect(config.connectionString)
+.then(()=>{console.log('database connected successfully')})
+.catch(err => console.error('MongoDB connection error:', err));
 
 const port = process.env.PORT
 const App = express()
 App.use(express.json())
 App.use(cors({
-    origin : 'http://localhost:5173'
+    origin : '*'
 }))
 
 
 
 
-App.get('/'   , authenticateToken     ,  async (req,res)=>{
+App.get('/'  ,  async (req,res)=>{
 
 const user = req.user ;
 

@@ -65,8 +65,7 @@ const getNotes =  async()=>{
 
 
         
-<Navber founderName = {founderName}/>
-<div className='text-xs font-medium pt-1 pl-6 '> What are you thinking?</div>            
+<Navber founderName = {founderName}/>         
 
 <div className= 'container mx-auto'>
     <div className =' max-sm:pr-5 max-sm:grid-cols-1 grid grid-cols-4  gap-5 mt-8'>

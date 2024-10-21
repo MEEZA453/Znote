@@ -35,7 +35,7 @@ const handleCreateAccountApi = async()=>{
         const response = await axios.post(url , accountData)
         console.log(response.data)
         localStorage.setItem('token' , response.data.accessToken)
-        navigate('/login')
+        navigate('/')
 
 
     } catch (error) {

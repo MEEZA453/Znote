@@ -24,7 +24,7 @@ setTags(tags.filter((tag) =>  tag !== tagToRemove))
     return <div>
        { tags?.length > 0 && (<div className = 'flex items-center gap-3 flex-wrap  mt-2'>
             {tags.map((tag , index) =>(
-                <span className=' bg-slate-200 rounded-sm p-1 ' key={index}>#{tag} <button  > <MdClose size={10}/>  </button></span>
+                <span className=' bg-slate-200 rounded-sm p-1 ' key={index}>{tag} <button  > <MdClose size={10}/>  </button></span>
             ))}
         </div>)}
     <div className = 'flex items-center gap-4  mt-3'>
