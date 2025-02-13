@@ -9,7 +9,9 @@ const user = require('./models/userModel.js')
 const Note = require('./models/note-model.js')
 const cookie = require('cookie-parser')
 const {authenticateToken} = require('./utilities');
-mongoose.connect(config.connectionString)
+mongoose.connect(config.connectionString , {
+    dbName: "myDatabase",
+}) 
 .then(()=>{console.log('database connected successfully')})
 .catch(err => console.error('MongoDB connection error:', err));
 
