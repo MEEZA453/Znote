@@ -12,7 +12,7 @@ export default function NoteCard({title , date , content , tags  , onEdit , onDe
      setIsPinned(true)
     setId(id)
     console.log(id);
-    const url = `http://localhost:3000/pin-note/${id}`
+    const url = `https://znote-9.onrender.com/pin-note/${id}`
     try {
         const response = await axios.patch(url , id)
         console.log(response)
@@ -31,7 +31,7 @@ export default function NoteCard({title , date , content , tags  , onEdit , onDe
  const handleNoteDelete = async ()=>{
     console.log('deleted')
     setId(id)
-    const url =`http://localhost:3000/delete-note/${id}`
+    const url =`https://znote-9.onrender.com/delete-note/${id}`
     try {
 const response = await axios.delete(url , id)
 console.log(response)

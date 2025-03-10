@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
 export default function ProfileInfo({userDeta , founderName}){
+  console.log(founderName)
     const navigate = useNavigate()
    
     const onLogout = ()=>{

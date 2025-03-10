@@ -2,12 +2,14 @@ import Navber2 from "../../component/navber/navber2.jsx"
 import {useState} from 'react' 
 import PassInput from '../../component/input/passwordinput.jsx'
 import {Link , useNavigate} from 'react-router-dom'
+import Loader from "../../component/loading.jsx"
 import axios from 'axios' 
 export default function Signup(){
     const navigate  = useNavigate()
      let [fullName , setFullName] = useState('')
     let [email , setEmail] = useState('')
 let [password , setPassword] = useState('')
+let [loading , setLoading] = useState(false)
 let [error , setError] = useState('')
 const handleSubmit = async (e)=>{
 e.preventDefault()
@@ -27,14 +29,16 @@ if(!fullName){
 //handle api 
  
 const handleCreateAccountApi = async()=>{
-    const url = 'http://localhost:3000/create-account'
+    const url = 'https://znote-9.onrender.com/create-account'
     const accountData = {
         fullName , email , password
     }
     try {
+        setLoading(true)
         const response = await axios.post(url , accountData)
         console.log(response.data)
         localStorage.setItem('token' , response.data.accessToken)
+        if(response) setLoading(false)
         navigate('/')
 
 
@@ -49,7 +53,7 @@ const handleCreateAccountApi = async()=>{
 
     return( <>
          <Navber2></Navber2>
-         <div  className='flex item-center justify-center mt-20'>
+         {!loading ? <div  className='flex item-center justify-center mt-20'>
         <div className= 'w-96  rouded bg-white px-7 py-10'>
             <form onSubmit  = {handleSubmit}>
 
@@ -63,6 +67,6 @@ const handleCreateAccountApi = async()=>{
                 <p className = 'text-sm text-center mt-4'>Already have an account? <Link to = '/' className = ' font-medium text-blue-500 underline'>Login</Link></p>
                
         </div>
-    </div>
+    </div> : <div className='w-screen h-screen items-center justify-center flex'><Loader/></div>}
     </>)
 }

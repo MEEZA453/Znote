@@ -17,7 +17,7 @@ const editNote =  async ()=>{
     console.log(currentId)
 
 
-  const url = `http://localhost:3000/edit-note/${currentId}`;
+  const url = `https://znote-9.onrender.com/edit-note/${currentId}`;
   const id = currentId;
   const data = {
     title , 
@@ -44,7 +44,7 @@ useEffect(()=>{
 
 const addNewNote =  async ()=>{
 console.log(type)
-const url = 'http://localhost:3000/add-note';
+const url = 'https://znote-9.onrender.com/add-note';
 const data = {
     title ,
     content,
